@@ -1,6 +1,6 @@
 # Flynn-Terraform
 
-### Create a Flynn cluster using terraform
+### Create a Flynn cluster using Terraform
 
 This repository holds work-in-progress code for launching Flynn into Google Cloud using Terraform.
 ### Prepare
