@@ -1,12 +1,12 @@
 # Flynn-Terraform
 
-### Create a Flynn cluster in terraform
+### Create a Flynn cluster using terraform
 
-This repository holds work-in-progress code for launching Flynn into Google cloud with Terraform.
+This repository holds work-in-progress code for launching Flynn into Google Cloud using Terraform.
 ### Prepare
 - Be sure you have the [Google Cloud SDK][1] `gcloud` CLI configured
 - Define the number of Flynn hosts desired in `terraform.tfvars`
-- (Optional) Set other variables as desired in `terraform.tfvars` - variable names are available in `vars.tf`
+- (Optional) Set other variables as desired in `terraform.tfvars` - variable names are discoverable in `vars.tf`
 
 ### Use
 
