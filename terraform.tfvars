@@ -1,1 +1,1 @@
-flynn_node_count = 1
+flynn_node_count = 3
