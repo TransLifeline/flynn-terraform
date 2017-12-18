@@ -21,7 +21,8 @@ cd clusters
 cp template NEW-CLUSTER
 cd NEW-CLUSTER
 ```
-1. Amend `prefix = "cluster-name"` in `backend.tf`. `test-cluster` and `other-cluster` are examples
+1. Amend `prefix = "NEW-CLUSTER"` in `backend.tf`. `test-cluster` and `other-cluster` are examples
+1. Ensure settins in `terraform.tfvars` are correct for your cluster/project.
 1. Initialize Terraform modules and storage: `terraform init`
 ```
 terraform init

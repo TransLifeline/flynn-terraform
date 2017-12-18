@@ -1,4 +1,4 @@
-flynn_cluster_name = "other-cluster" 
+flynn_cluster_name = "other-cluster"
 
 flynn_node_count = 3
 
