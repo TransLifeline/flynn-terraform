@@ -49,11 +49,6 @@ terraform destroy --force
 
 This launches instances and downloads/installs Flynn, but does not bootstrap the machines.
 
-##### TODO
-- Add discovery step
-- Add bootstrap step
-- Add outputs
-
 
 [1]: https://cloud.google.com/sdk/downloads
 [2]: https://www.terraform.io/downloads.html
