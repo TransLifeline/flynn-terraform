@@ -47,7 +47,7 @@ terraform destroy --force
 
 ### Current Status
 
-This launches instances and downloads/installs Flynn, but does not bootstrap the machines.
+This will go from zero to fully-built Flynn cluster in about 5 minutes.
 
 
 [1]: https://cloud.google.com/sdk/downloads
