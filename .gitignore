@@ -3,4 +3,3 @@
 .terraform/
 clusters/*/*.tfvars
 !clusters/template/*.tfvars
-*.tf
