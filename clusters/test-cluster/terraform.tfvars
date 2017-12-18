@@ -5,3 +5,5 @@ gce_ssh_user = "jgarcia"
 gce_dns_name = "tlltest.org"
 
 gce_dns_zone = "test-zone"
+
+flynn_gce_project = "flynn-staging"
