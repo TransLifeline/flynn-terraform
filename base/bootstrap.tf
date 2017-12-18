@@ -12,7 +12,7 @@ resource "null_resource" "flynn_bootstrap" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/bootstrap.sh",
-      "/tmp/bootstrap.sh ${substr(google_dns_record_set.flynn-a.name,0,length(google_dns_record_set.flynn-a.name)-1)} ${flynn_discovery_token.flynn_token.id}",
+      "/tmp/bootstrap.sh ${local.flynn_cluster_name}.${var.gce_dns_name} ${flynn_discovery_token.flynn_token.id}",
     ]
   }
 }

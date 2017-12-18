@@ -1,5 +1,3 @@
-flynn_cluster_name = ""
-
 flynn_node_count = 3
 
 gce_ssh_user = ""

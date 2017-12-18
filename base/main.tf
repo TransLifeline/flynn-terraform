@@ -3,12 +3,16 @@ provider "google" {
   region  = "${substr(var.flynn_gce_zone,0,length(var.flynn_gce_zone)-2)}"
 }
 
+locals {
+  flynn_cluster_name = "${basename(path.cwd)}"
+}
+
 resource "google_compute_instance" "flynn" {
-  name         = "${format("${var.flynn_cluster_name}-flynn-%02d", count.index)}"
+  name         = "${format("${local.flynn_cluster_name}-flynn-%02d", count.index)}"
   machine_type = "${var.flynn_gce_machine_type}"
   zone         = "${var.flynn_gce_zone}"
   count        = "${var.flynn_node_count}"
-  tags         = ["flynn-${var.flynn_cluster_name}-node"]
+  tags         = ["flynn-${local.flynn_cluster_name}-node"]
 
   boot_disk {
     initialize_params {
@@ -36,7 +40,7 @@ resource "google_compute_instance" "flynn" {
 }
 
 resource "google_compute_firewall" "flynn" {
-  name    = "${var.flynn_cluster_name}-firewall"
+  name    = "${local.flynn_cluster_name}-firewall"
   network = "${var.flynn_network}"
 
   allow {
@@ -44,11 +48,11 @@ resource "google_compute_firewall" "flynn" {
     ports    = ["80", "443", "3000-3500"]
   }
 
-  target_tags = ["flynn-${var.flynn_cluster_name}-node"]
+  target_tags = ["flynn-${local.flynn_cluster_name}-node"]
 }
 
 resource "google_dns_record_set" "flynn-a" {
-  name         = "${var.flynn_cluster_name}.${var.gce_dns_name}"
+  name         = "${local.flynn_cluster_name}.${var.gce_dns_name}."
   type         = "A"
   ttl          = 20
   managed_zone = "${var.gce_dns_zone}"
@@ -56,11 +60,11 @@ resource "google_dns_record_set" "flynn-a" {
 }
 
 resource "google_dns_record_set" "flynn-cname" {
-  name         = "*.${var.flynn_cluster_name}.${var.gce_dns_name}"
+  name         = "*.${local.flynn_cluster_name}.${var.gce_dns_name}."
   type         = "CNAME"
   ttl          = 20
   managed_zone = "${var.gce_dns_zone}"
-  rrdatas      = ["${var.flynn_cluster_name}.${var.gce_dns_name}"]
+  rrdatas      = ["${local.flynn_cluster_name}.${var.gce_dns_name}."]
 }
 
 resource "flynn_discovery_token" "flynn_token" {}

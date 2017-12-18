@@ -1,5 +1,3 @@
-variable "flynn_cluster_name" {}
-
 variable "flynn_gce_machine_type" {
   default = "n1-standard-1"
 }
