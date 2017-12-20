@@ -11,25 +11,45 @@ This repository holds work-in-progress code for launching Flynn into Google Clou
 ### Use
 
 1. Get [HashiCorp's Terraform][2]
-1. Navigate to repository root
-1. Run `terraform plan -out plan.tfplan`
+1. Install [terraform-provider-flynn][3] per its instructions. n.b.: requires golang >1.7
+1. Navigate to `./clusters`
+```
+cd clusters
+```
+1. Copy `template` folder to a folder with your new cluster name and enter the folder:
+```
+cp template NEW-CLUSTER
+cd NEW-CLUSTER
+```
+1. Amend `prefix = "NEW-CLUSTER"` in `backend.tf`. `test-cluster` and `other-cluster` are examples
+1. Ensure settins in `terraform.tfvars` are correct for your cluster/project.
+1. Initialize Terraform modules and storage: `terraform init`
+```
+terraform init
+```
+1. Generate a plan
+```
+terraform plan -out plan.tfplan
+```
 1. Visually verify plan
-1. Execute the plan using `terraform apply plan.tfplan`
+1. Execute the plan using
+```
+terraform apply plan.tfplan
+```
 1. As needed, refresh the plan with another cycle of steps 2-5
-1. Delete the nodes by using `terraform destroy --force`
+1. Delete the nodes by using
+```
+terraform destroy --force
+```
 
 ### Develop
 - We're using regular gitflow, so branch and pull request as normal.
 
 ### Current Status
 
-This launches instances and downloads/installs Flynn, but does not bootstrap the machines.
-
-##### TODO
-- Add discovery step
-- Add bootstrap step
-- Add outputs
+This will go from zero to fully-built Flynn cluster in about 5 minutes.
 
 
 [1]: https://cloud.google.com/sdk/downloads
 [2]: https://www.terraform.io/downloads.html
+[3]:https://github.com/benosman/terraform-provider-flynn

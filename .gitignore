@@ -1,4 +1,5 @@
 *.tfstate*
 *.tfplan
 .terraform/
-*.tfvars
+clusters/*/*.tfvars
+!clusters/template/*.tfvars
